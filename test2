@@ -1,0 +1,53 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CommonProject
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //int[] hoopHeights = { 81, 65, 76, 55, 59, 46, 55, 21, 21, 10 };
+            int[] hoopHeights = new int[10];
+            int aeroheight = 100; // By default, sets the value to 100
+            int hooplength = hoopHeights.Count();
+            bool[] bestpath = new bool[hooplength];
+
+            int passthroughcount = 0;
+
+            Console.WriteLine("\n Enter the height of the aeroplane : ");
+            aeroheight = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("\n Enter 10 Input values whose values are below {0} : ", aeroheight);
+
+            for (int i = 0; i < hoopHeights.Length; i++)
+            {
+                hoopHeights[i] = Convert.ToInt32(Console.ReadLine());
+            }
+
+            Console.WriteLine("\n Aeroplane height is : " + aeroheight);
+            Console.WriteLine("\n Hoopheights array value with pass through value : ");
+
+            for (int i = 0; i < hoopHeights.Length; i++)
+            {
+                if (aeroheight >= hoopHeights[i])
+                {
+                    aeroheight = hoopHeights[i];
+                    bestpath[i] = true;
+                    passthroughcount++;
+                }
+                else
+                {
+                    bestpath[i] = false;
+                }
+                Console.WriteLine("\n " + hoopHeights[i].ToString() + " - " + bestpath[i].ToString(), " \n ");
+            }
+
+            Console.WriteLine("\n Hoop passed through by aeroplane count : " + passthroughcount);
+            Console.ReadLine();
+        }
+    }
+}
